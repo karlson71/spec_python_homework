@@ -10,6 +10,8 @@
 - [PEP8 — стиль написания кода](https://peps.python.org/pep-0008/)
 - [Python3 org - download Python](https://www.python.org/downloads/)
 - [Pycharm download](https://www.jetbrains.com/pycharm/editions/)
+- [Specialist link](https://www.specialist.ru/group/583008)
+- [Git-commands](https://github.com/cyberspacedk/Git-commands?tab=readme-ov-file)
 
 
 ---
