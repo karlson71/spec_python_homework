@@ -43,7 +43,6 @@ tile_shape_sm, tile_width_sm = tile_shape / 10, tile_width / 10
 # 1.2 Формула нахождения массы: m = V * p
 # 1.3 Неизвестно V?? Формула нахождения объема:
 # V = pi * (d/2) ** 2 * h, где p - число "пи", d - диаметр плитки, h - толщина плитки
-
 v = math.pi * (tile_shape_sm / 2) ** 2 * tile_width_sm
 m = v * ceramic_density
 
@@ -59,8 +58,6 @@ total_m = round(m * count_tiles_in_package / 1e3 + 0.3, 1)
 
 # 3. Считаю число упаковок:
 # ширина и для коробки, пользователь вводит с клавиатуры
-
-
 width = int(input("Введите ширину коробки: "))
 length = int(input("Введите длину коробки: "))
 
