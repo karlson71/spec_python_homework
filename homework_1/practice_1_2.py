@@ -22,10 +22,10 @@
 
 import math
 
-tile_shape = 100                # диаметр плитки в мм
+d = 100                         # диаметр плитки в мм
 tile_width = 12                 # толщина плитки в мм
 ceramic_density = 2.52          # плотность керамики г/см3
-count_tiles_in_package = 20     # число плиток в упаковке
+n_tiles = 20                    # число плиток в упаковке
 package_weight = 300            # вес упаковки
 
 # Разобью задачи на несколько этапов:
@@ -34,46 +34,36 @@ package_weight = 300            # вес упаковки
 # 3. На третьем шаге посчитаю число упаковок
 
 #----------------------------------------------------------
-#----------------------------------------------------------
 
 # 1. Масса одной плитки:
-# 1.1 Перевожу мм в см диаметр плитки и толщину
-tile_shape_sm, tile_width_sm = tile_shape / 10, tile_width / 10
+d /= 10
+tile_width /= 10
 
 # 1.2 Формула нахождения массы: m = V * p
-# 1.3 Неизвестно V?? Формула нахождения объема:
-# V = pi * (d/2) ** 2 * h, где p - число "пи", d - диаметр плитки, h - толщина плитки
-
-v = math.pi * (tile_shape_sm / 2) ** 2 * tile_width_sm
+v = math.pi * (d / 2) ** 2 * tile_width
 m = v * ceramic_density
 
 #----------------------------------------------------------
-#----------------------------------------------------------
 
 # 2. Общая масса плиток в упаковке:
-# т.к. нам нужно считать брутто - то надо еще прибавить 300 грамм
-total_m = round(m * count_tiles_in_package / 1e3 + 0.3, 1)
+total_m = round(m * n_tiles / 1e3 + (package_weight / 1e3), 1)
 
-#----------------------------------------------------------
 #----------------------------------------------------------
 
 # 3. Считаю число упаковок:
-# ширина и для коробки, пользователь вводит с клавиатуры
-
-
 width = int(input("Введите ширину коробки: "))
 length = int(input("Введите длину коробки: "))
 
 # Для начала нужно понять сколько плиток в одном ряду:
-ceramic_in_one_line = math.ceil(width / tile_shape_sm)
-ceramic_lines = math.ceil(length / tile_shape_sm)
+one_line = math.ceil(width / d)
+lines = math.ceil(length / d)
 
 # считаю кол-во плиток всего
-total_ceramics = ceramic_in_one_line * ceramic_lines
-corobki = math.ceil(total_ceramics / count_tiles_in_package)
+total_ceramics = one_line * lines
+n_boxes = math.ceil(total_ceramics / n_tiles)
 
 # считаю общий вес
-total_weight = round(corobki * total_m)
+total_weight = round(n_boxes * total_m)
 
 print(f"Вес 1 коробки: {total_m} кг")
-print(f"Число коробок: {corobki}, вес: {total_weight} кг")
+print(f"Число коробок: {n_boxes}, вес: {total_weight} кг")
