@@ -34,7 +34,7 @@ elif current_price < start_price * 0.5:
 
 elif current_price - max_bonus < start_price * 0.5:
     bonus_to_use = round(current_price - start_price * 0.5)
-    remains_bonus =round(bonus - bonus_to_use)
+    remains_bonus = round(bonus - bonus_to_use)
     final_sum = round(current_price - bonus_to_use)
     earned_bonus = 0
 
